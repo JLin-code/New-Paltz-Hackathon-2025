@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laundry Availability Tracker</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🧺 Laundry Room Availability</h1>
+            <p class="subtitle">Real-time washing machine status</p>
+        </header>
+
+        <div class="stats">
+            <div class="stat-card">
+                <span class="stat-number" id="available-count">0</span>
+                <span class="stat-label">Available</span>
+            </div>
+            <div class="stat-card">
+                <span class="stat-number" id="in-use-count">0</span>
+                <span class="stat-label">In Use</span>
+            </div>
+        </div>
+
+        <div class="machines-grid" id="machines-grid">
+            <!-- Machines will be dynamically added here -->
+        </div>
+
+        <button class="refresh-btn" id="refresh-btn">Refresh Status</button>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
