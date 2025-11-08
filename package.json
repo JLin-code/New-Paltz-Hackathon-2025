@@ -1,0 +1,19 @@
+{
+  "name": "new-paltz-hackathon-2025",
+  "version": "1.0.0",
+  "private": true,
+  "workspaces": [
+    "client",
+    "server",
+    "database"
+  ],
+  "scripts": {
+    "dev": "concurrently \"npm run dev:client\" \"npm run dev:server\"",
+    "dev:client": "cd client && npm run dev",
+    "dev:server": "cd server && npm run dev",
+    "install:all": "npm install && npm install --prefix client && npm install --prefix server && npm install --prefix database"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}
