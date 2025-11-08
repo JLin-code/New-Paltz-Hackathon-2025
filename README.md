@@ -5,7 +5,7 @@
 ```
 ├── client/          # Frontend - Person 1
 ├── server/          # Backend API - Person 2  
-├── database/        # DB schemas & config - Person 3
+├── server/database  # DB schemas & config - Person 3
 └── shared/          # Shared types/constants
 ```
 
@@ -23,7 +23,7 @@
 - Authentication & authorization
 - API documentation
 
-### 👤 Person 3: Database & DevOps (`database/`)
+### 👤 Person 3: Database & DevOps (`server/database`)
 - Database schema design
 - Migrations and seeds
 - Shared TypeScript types
