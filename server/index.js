@@ -1,7 +1,7 @@
 const express = require("express");
 
 const app = express();
-const PORT = process.env.PORT || process.argv[2] || 3000;
+const PORT = process.env.PORT || 10000;
 
 // Simple JSON endpoint for quick dev verification
 app.get("/", (req, res) => {
