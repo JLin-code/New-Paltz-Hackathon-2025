@@ -1,11 +1,23 @@
 const express = require("express");
 
 const app = express();
-const PORT = process.env.PORT || 10000;
+const PORT = process.env.PORT ?? 10000;
 
-// Simple JSON endpoint for quick dev verification
-app.get("/", (req, res) => {
-  res.json({ status: "ok", message: "Server running" });
+app.use(express.json());
+
+//controllers
+app.use("/", express.static("dist"));
+
+//error handling middleware
+app.use((err, req, res, next) => {
+  console.error(err);
+  const status = err.status || 500;
+
+  const error = {
+    status,
+    message: err.message || statusCodes.INTERNAL_SERVER_ERROR,
+  };
+  res.status(status).send(error);
 });
 
 app.listen(PORT, () => {
