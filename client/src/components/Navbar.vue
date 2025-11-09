@@ -11,6 +11,9 @@ const southDropdown = ref(false);
     <div>
 <nav class="navbar" role="navigation" aria-label="main navigation">
   <div class="navbar-brand">
+    <RouterLink to="/" class="navbar-item">
+      <img src="/laundry.png" alt="Logo" style="max-height: 2.5rem;">
+    </RouterLink>
 
     <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample" 
     :class="{ 'is-active': burgerActive }" @click="burgerActive = !burgerActive">
@@ -22,8 +25,9 @@ const southDropdown = ref(false);
   </div>
 
   <div id="navbarBasicExample" class="navbar-menu" :class="{ 'is-active': burgerActive }">
-    <div class="navbar-start">
-      <RouterLink to="/" class="navbar-item"><i class="fas fa-home"></i>Home</RouterLink>
+    <div class="navbar-start"></div>
+    
+    <div class="navbar-center" style="flex-grow: 1; display: flex; justify-content: center; align-items: center;">
       
       <!-- Parker Complex Dropdown -->
       <div class="navbar-item has-dropdown" :class="{ 'is-active': parkerDropdown }" @click="parkerDropdown = !parkerDropdown">
@@ -68,6 +72,7 @@ const southDropdown = ref(false);
 
     </div>
 
+    <div class="navbar-end"></div>
   </div>
 </nav>
     </div>

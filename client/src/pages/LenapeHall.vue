@@ -5,7 +5,7 @@ import Dryer from '../components/Dryer.vue';
 
 <template>
     <div class="machine-grid">
-        <WashingMachine v-for="i in 5" :key="i" />
+        <WashingMachine v-for="i in 6" :key="i" />
     </div>
     <div class="dryer-grid">
         <Dryer v-for="i in 4" :key="i" />
