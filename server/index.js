@@ -8,7 +8,7 @@ const PORT = process.env.PORT ?? 10000;
 app.use(express.json());
 
 //controllers
-app.use("/", express.static("../client/dist"));
+app.use("/", express.static(path.join(__dirname, "../client/dist")));
 
 app.use((req, res) => {
   res.send("Catch-all route working");
