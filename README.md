@@ -1,4 +1,4 @@
-# Laundry Tracker - New Paltz Hackathon 2025
+# New Paltz Laundry Management - New Paltz Hackathon 2025
 
 ## What is this?
 
