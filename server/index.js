@@ -1,5 +1,5 @@
 require("dotenv").config();
-
+const path = require("path");
 const express = require("express");
 
 const app = express();
@@ -9,6 +9,10 @@ app.use(express.json());
 
 //controllers
 app.use("/", express.static("dist"));
+
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "dist/index.html"));
+});
 
 //(need 4 params to be recognized as error handling middleware by express)
 app.use((err, req, res, next) => {
