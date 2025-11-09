@@ -8,9 +8,8 @@ const corsOptions = {
 const app = express();
 const PORT = process.env.PORT ?? 10000;
 
-// Import routes
-const hallRoutes = require("./routes/hallRoutes");
-const machineRoutes = require("./routes/machineRoutes");
+const hallController = require("./controllers/hallController");
+const machineController = require("./controllers/machineController");
 
 // Middleware
 app.use(express.json());
@@ -20,8 +19,8 @@ app.use(cors(corsOptions));
 // controllers
 app
   .use("/", express.static(path.join(__dirname, "../client/dist")))
-  .use("/api/halls", hallRoutes)
-  .use("/api/machines", machineRoutes)
+  .use("/api/halls", hallController)
+  .use("/api/machines", machineController)
   .get("*", (req, res) => {
     res.sendFile(path.join(__dirname, "../client/dist/index.html"));
   });
