@@ -16,7 +16,8 @@
     "install:all": "npm install && npm --prefix client install"
   },
   "dependencies": {
-    "express": "^5.1.0"
+    "express": "^5.1.0",
+    "cors": "^2.8.5"
   },
   "devDependencies": {
     "concurrently": "^9.2.1",
