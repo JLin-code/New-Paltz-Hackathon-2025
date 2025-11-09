@@ -51,7 +51,7 @@ const southDropdown = ref(false);
         </a>
         <div class="navbar-dropdown">
           <RouterLink to="/AshokanHall" class="navbar-item">Ashokan Hall</RouterLink>
-          <RouterLink to="/AwostingHall" class="navbar-item">Awosting Hall</RouterLink>
+          <RouterLink to="/AwoostingHall" class="navbar-item">Awoosting Hall</RouterLink>
           <RouterLink to="/MinnewaskaHall" class="navbar-item">Minnewaska Hall</RouterLink>
           <RouterLink to="/MohonkHall" class="navbar-item">Mohonk Hall</RouterLink>
           <RouterLink to="/ShawangunkHall" class="navbar-item">Shawangunk Hall</RouterLink>
