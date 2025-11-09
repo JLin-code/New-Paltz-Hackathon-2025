@@ -76,9 +76,6 @@ ON CONFLICT (hall_id, type, machine_number) DO NOTHING;
 CREATE INDEX IF NOT EXISTS idx_machines_hall_id ON machines(hall_id);
 CREATE INDEX IF NOT EXISTS idx_machines_status ON machines(status);
 CREATE INDEX IF NOT EXISTS idx_machines_type ON machines(type);
-CREATE INDEX IF NOT EXISTS idx_notifications_user_id ON notifications(user_id);
-CREATE INDEX IF NOT EXISTS idx_notifications_is_read ON notifications(is_read);
-CREATE INDEX IF NOT EXISTS idx_notifications_created_at ON notifications(created_at);
 
 -- Create a function to automatically update last_updated timestamp
 CREATE OR REPLACE FUNCTION update_last_updated_column()
@@ -90,7 +87,14 @@ END;
 $$ language 'plpgsql';
 
 -- Create trigger to automatically update last_updated
-CREATE TRIGGER update_machines_last_updated 
-    BEFORE UPDATE ON machines 
-    FOR EACH ROW 
-    EXECUTE FUNCTION update_last_updated_column();
+CREATE OR REPLACE FUNCTION public.update_last_updated_column()
+RETURNS trigger
+LANGUAGE plpgsql
+SET search_path = public, pg_catalog
+AS $function$
+BEGIN
+  -- set last_updated to current timestamp using pg_catalog to avoid search_path ambiguity
+  NEW.last_updated := pg_catalog.now();
+  RETURN NEW;
+END;
+$function$;
