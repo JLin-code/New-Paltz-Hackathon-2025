@@ -9,7 +9,7 @@ const status = ref('Idle') //this is dummy javascript. You can remove it
     <div>
         <img class="dryer":src="dryer" alt="Dryer" />
         <h1 class="status">Status: {{ status }}</h1> <!--Change this if you want-->
-        <button @click="status = status === 'Idle' ? 'Running' : 'Idle'">Toggle</button> <!--this is also dummy javascript that you can remove-->
+        <button class="button is-success" @click="status = status === 'Idle' ? 'Running' : 'Idle'">Toggle</button> <!--this is also dummy javascript that you can remove-->
     </div>
 </template>
 
