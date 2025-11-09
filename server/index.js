@@ -10,15 +10,12 @@ app.use(express.json());
 //controllers
 app.use("/", express.static("dist"));
 
-//error handling middleware
-app.use((err, res, next) => {
-  console.error(err);
-  const status = err.status || 500;
-  const error = {
-    status,
-    message: err.message,
-  };
-  res.status(status).send(error);
+//(need 4 params to be recognized as error handling middleware by express)
+app.use((err, req, res, next) => {
+  // log full stack when available, fallback to the error itself
+  console.error(err && err.stack ? err.stack : err);
+
+  res.status(err?.status || 500).send(err?.message || "Internal Server Error");
 });
 
 app.listen(PORT, () => {
