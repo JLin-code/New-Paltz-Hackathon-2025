@@ -2,6 +2,8 @@ import express from 'express';
 import cors from 'cors';
 import { testConnection } from './config/database.js';
 import userRoutes from './routes/users.js';
+import machineRoutes from './routes/machines.js';
+import hallRoutes from './routes/halls.js';
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -16,6 +18,8 @@ app.get('/health', (req, res) => {
 
 // Routes
 app.use('/api/users', userRoutes);
+app.use('/api/machines', machineRoutes);
+app.use('/api/halls', hallRoutes);
 
 // Error handling middleware
 app.use((err, req, res, next) => {

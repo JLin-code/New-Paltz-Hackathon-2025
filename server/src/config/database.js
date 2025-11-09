@@ -19,9 +19,9 @@ export const supabase = createClient(supabaseUrl, supabaseKey);
 
 export const testConnection = async () => {
   try {
-    const { data, error } = await supabase.from('users').select('count', { count: 'exact', head: true });
+    const { data, error } = await supabase.from('halls').select('count', { count: 'exact', head: true });
     if (error && error.code !== 'PGRST116') {
-      console.log('⚠️  Database connected but users table not found. Please run migrations.');
+      console.log('⚠️  Database connected but tables not found. Please check your schema.');
       return true;
     }
     console.log('✅ Database connected successfully');
