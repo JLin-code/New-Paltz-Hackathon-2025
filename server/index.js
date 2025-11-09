@@ -22,11 +22,6 @@ app
   .use("/api/machines", machineController)
   .use("/", express.static(path.join(__dirname, "../client/dist")));
 
-// Catch-all route for Vue Router (SPA)
-app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "../client/dist/index.html"));
-});
-
 //(need 4 params to be recognized as error handling middleware by express)
 app.use((err, req, res, next) => {
   // log full stack when available, fallback to the error itself
