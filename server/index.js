@@ -1,18 +1,21 @@
 require("dotenv").config();
 const path = require("path");
 const express = require("express");
-
+const cors = require("cors");
+const corsOptions = {
+  origin: "https://new-paltz-hackathon-2025.onrender.com",
+};
 const app = express();
 const PORT = process.env.PORT ?? 10000;
 
+// Middleware
 app.use(express.json());
 
-//controllers
+app.use(cors(corsOptions));
+
+// Serve static files (Vue.js app)
 app.use("/", express.static(path.join(__dirname, "../client/dist")));
 
-app.use((req, res) => {
-  res.send("Catch-all route working");
-});
 //(need 4 params to be recognized as error handling middleware by express)
 app.use((err, req, res, next) => {
   // log full stack when available, fallback to the error itself
