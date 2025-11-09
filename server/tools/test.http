@@ -1,4 +1,60 @@
-@rootUrl = "http://localhost:5173/"
+@rootUrl = http://localhost:10000
 
-GET @{{rootUrl}}/api/machines
+### Get all halls
+GET {{rootUrl}}/api/halls
+
+### Get hall by ID (Bouton Hall = 2)
+GET {{rootUrl}}/api/halls/2
+
+### Get hall by name
+GET {{rootUrl}}/api/halls/name/Bouton Hall
+
+### Get all machines for a hall
+GET {{rootUrl}}/api/halls/2/machines
+
+### Get available machines for a hall
+GET {{rootUrl}}/api/halls/2/available-machines
+
+### Get hall status summary
+GET {{rootUrl}}/api/halls/2/status
+
+### Get all machines
+GET {{rootUrl}}/api/machines
+
+### Get machines by hall
+GET {{rootUrl}}/api/machines/hall/2
+
+### Get machine by ID
+GET {{rootUrl}}/api/machines/1
+
+### Update machine status
+PUT {{rootUrl}}/api/machines/1/status
+Content-Type: application/json
+
+{
+  "status": "in_use",
+  "timeRemaining": 45
+}
+
+### Update machine status back to available
+PUT {{rootUrl}}/api/machines/1/status
+Content-Type: application/json
+
+{
+  "status": "available",
+  "timeRemaining": 0
+}
+
+### Create new machine
+POST {{rootUrl}}/api/machines
+Content-Type: application/json
+
+{
+  "hall_id": 2,
+  "type": "washer",
+  "machine_number": 99
+}
+
+### Delete machine
+DELETE {{rootUrl}}/api/machines/1
 

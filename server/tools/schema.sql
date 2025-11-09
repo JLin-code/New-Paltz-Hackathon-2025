@@ -22,44 +22,35 @@ CREATE TABLE IF NOT EXISTS machines (
   UNIQUE(hall_id, type, machine_number)
 );
 
--- Insert sample data for the halls 
+-- Insert all 14 halls organized by complex
 INSERT INTO halls (name, building, washer_count, dryer_count) VALUES
-  ('Awosting Hall', 'Awosting', 4, 3),
-  ('Bouton Hall', 'Bouton', 6, 4),
-  ('Esopus Hall', 'Esopus', 5, 3),
-  ('Ridgeview Hall', 'Ridgeview', 8, 6)
+  -- Parker Complex
+  ('Bliss Hall', 'Parker Complex', 5, 4),
+  ('Bouton Hall', 'Parker Complex', 6, 6),
+  ('Capen Hall', 'Parker Complex', 5, 4),
+  ('Gage Hall', 'Parker Complex', 5, 4),
+  ('Scudder Hall', 'Parker Complex', 5, 4),
+  ('Shango/College Hall', 'Parker Complex', 5, 4),
+  -- Peregrine Complex
+  ('Ashokan Hall', 'Peregrine Complex', 4, 3),
+  ('Awosting Hall', 'Peregrine Complex', 4, 3),
+  ('Minnewaska Hall', 'Peregrine Complex', 4, 3),
+  ('Mohonk Hall', 'Peregrine Complex', 4, 3),
+  ('Shawangunk Hall', 'Peregrine Complex', 4, 3),
+  -- South Complex
+  ('Esopus Hall', 'South Complex', 5, 4),
+  ('Lenape Hall', 'South Complex', 6, 4),
+  ('Ridgeview Hall', 'South Complex', 9, 3)
 ON CONFLICT (name) DO NOTHING;
 
--- -- Add sample machines for hall
-INSERT INTO machines (hall_id, type, machine_number, status) 
-SELECT 
-  h.id,
-  'washer',
-  generate_series(1, 4),
-  'available'
-FROM halls h 
-WHERE h.name = 'Awosting Hall'
-ON CONFLICT (hall_id, type, machine_number) DO NOTHING;
-
-INSERT INTO machines (hall_id, type, machine_number, status) 
-SELECT 
-  h.id,
-  'dryer',
-  generate_series(1, 3),
-  'available'
-FROM halls h 
-WHERE h.name = 'Awosting Hall'
-ON CONFLICT (hall_id, type, machine_number) DO NOTHING;
-
--- Add similar machines for other halls
+-- Generate machines for all halls automatically
 INSERT INTO machines (hall_id, type, machine_number, status) 
 SELECT 
   h.id,
   'washer',
   generate_series(1, h.washer_count),
   'available'
-FROM halls h 
-WHERE h.name != 'Awosting Hall'
+FROM halls h
 ON CONFLICT (hall_id, type, machine_number) DO NOTHING;
 
 INSERT INTO machines (hall_id, type, machine_number, status) 
@@ -68,8 +59,7 @@ SELECT
   'dryer',
   generate_series(1, h.dryer_count),
   'available'
-FROM halls h 
-WHERE h.name != 'Awosting Hall'
+FROM halls h
 ON CONFLICT (hall_id, type, machine_number) DO NOTHING;
 
 -- Create indexes for better performance
@@ -87,14 +77,8 @@ END;
 $$ language 'plpgsql';
 
 -- Create trigger to automatically update last_updated
-CREATE OR REPLACE FUNCTION public.update_last_updated_column()
-RETURNS trigger
-LANGUAGE plpgsql
-SET search_path = public, pg_catalog
-AS $function$
-BEGIN
-  -- set last_updated to current timestamp using pg_catalog to avoid search_path ambiguity
-  NEW.last_updated := pg_catalog.now();
-  RETURN NEW;
-END;
-$function$;
+DROP TRIGGER IF EXISTS update_machines_last_updated ON machines;
+CREATE TRIGGER update_machines_last_updated
+BEFORE UPDATE ON machines
+FOR EACH ROW
+EXECUTE FUNCTION update_last_updated_column();
