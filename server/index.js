@@ -9,13 +9,12 @@ app.use(express.json());
 app.use("/", express.static("dist"));
 
 //error handling middleware
-app.use((err, req, res, next) => {
+app.use((err, res, next) => {
   console.error(err);
   const status = err.status || 500;
-
   const error = {
     status,
-    message: err.message || statusCodes.INTERNAL_SERVER_ERROR,
+    message: err.message,
   };
   res.status(status).send(error);
 });
