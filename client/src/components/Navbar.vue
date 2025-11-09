@@ -20,25 +20,11 @@ const burgerActive = ref(false);
 
   <div id="navbarBasicExample" class="navbar-menu" :class="{ 'is-active': burgerActive }">
     <div class="navbar-start">
-      <a class="navbar-item">
-        Home
-      </a>
-
-      <a class="navbar-item">
-        Bouton Hall
-      </a>
-
-      <a class="navbar-item">
-        Awoosting Hall
-      </a>
-
-      <a class="navbar-item">
-        Ridgeview Hall
-      </a>
-
-      <a class="navbar-item">
-        Ridgeview Hall
-      </a>
+      <RouterLink to="/" class="navbar-item"><i class="fas fa-home"></i>Home</RouterLink>
+      <RouterLink to="/BoutonHall" class="navbar-item"><i class="fas fa-home"></i>Bouton Hall</RouterLink>
+      <RouterLink to="/AwoostingHall" class="navbar-item"><i class="fas fa-home"></i>Awoosting Hall</RouterLink>
+      <RouterLink to="/EsopusHall" class="navbar-item"><i class="fas fa-home"></i>Esopus Hall</RouterLink>
+      <RouterLink to="/RidgeviewHall" class="navbar-item"><i class="fas fa-home"></i>Ridgeview Hall</RouterLink>
 
     </div>
 
