@@ -25,6 +25,6 @@ import Dryer from '../components/Dryer.vue';
     flex-wrap: wrap;
     gap: 10px;
     justify-content: center;
-    padding-top: 200px;
+    padding-top: 50px;
 }
 </style>
