@@ -21,6 +21,10 @@ const burgerActive = ref(false);
   <div id="navbarBasicExample" class="navbar-menu" :class="{ 'is-active': burgerActive }">
     <div class="navbar-start">
       <a class="navbar-item">
+        Home
+      </a>
+
+      <a class="navbar-item">
         Bouton Hall
       </a>
 

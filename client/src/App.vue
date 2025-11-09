@@ -6,7 +6,6 @@ import BoutonHall from './pages/BoutonHall.vue';
 <template>
   <div>
     <Navbar />
-    <BoutonHall />
 
     <!-- Routed pages will render here -->
     <router-view />
