@@ -27,7 +27,7 @@ const southDropdown = ref(false);
   <div id="navbarBasicExample" class="navbar-menu" :class="{ 'is-active': burgerActive }">
     <div class="navbar-start"></div>
     
-    <div class="navbar-center" style="flex-grow: 1; display: flex; justify-content: center; align-items: center;">
+    <div class="navbar-center">
       
       <!-- Parker Complex Dropdown -->
       <div class="navbar-item has-dropdown" :class="{ 'is-active': parkerDropdown }" @click="parkerDropdown = !parkerDropdown">
@@ -78,6 +78,13 @@ const southDropdown = ref(false);
     </div>
 </template>
 
-<style lang="scss" scoped>
+<style scoped>
+
+.navbar-center {
+   flex-grow: 1; 
+   display: flex; 
+   justify-content: center; 
+   align-items: center;
+}
 
 </style>
