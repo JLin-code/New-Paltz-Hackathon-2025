@@ -10,7 +10,7 @@ app.use(express.json());
 //controllers
 app.use("/", express.static("../client/dist"));
 
-app.get("*", (req, res) => {
+app.use((req, res) => {
   res.send("Catch-all route working");
 });
 //(need 4 params to be recognized as error handling middleware by express)
