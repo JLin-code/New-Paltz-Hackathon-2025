@@ -8,11 +8,7 @@ const PORT = process.env.PORT ?? 10000;
 app.use(express.json());
 
 //controllers
-app.use("/", express.static("dist"));
-
-app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "dist/index.html"));
-});
+app.use("/", express.static("../client/dist"));
 
 //(need 4 params to be recognized as error handling middleware by express)
 app.use((err, req, res, next) => {
