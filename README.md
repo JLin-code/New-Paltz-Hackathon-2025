@@ -1,27 +1,39 @@
-# New Paltz Hackathon 2025
+# Laundry Tracker - New Paltz Hackathon 2025
 
-## Project Structure
+## What is this?
 
-```
-├── client/          # Frontend - Johnny
-├── server/          # Backend API - Jack, Joe
-```
+A real-time laundry machine availability tracker for college residence halls. Students can check which washers and dryers are available before walking to the laundry room.
 
-## Getting Started
+## The Problem
 
-### Initial Setup
-```bash
-# Install all dependencies
-npm run install:all
+Students waste time walking to laundry rooms only to find all machines occupied. There's no way to know machine availability without physically checking.
 
-# Setup environment files
-cp .env.example .env
-```
+## Our Solution
 
-### Development
-```bash
-#run client + server
-"dev": "concurrently \"npm:dev:client\" \"npm:dev:server\"",
+A web app that shows:
+- 🏢 **All residence halls** on campus
+- 🧺 **Machine status** (available, in-use, out-of-order)
+- ⏱️ **Time remaining** on machines currently in use
+- 📱 **Real-time updates** so you always have current information
 
-"dev:client": "npm --prefix client run dev",
-"dev:server": "nodemon --watch server --exec \"node server/index.js\"",
+## How It Works
+
+1. Select your residence hall
+2. View all washers and dryers
+3. See which machines are available
+4. Check how long until occupied machines are free
+
+## Technology Stack
+
+**Frontend:** Vue.js + Bulma CSS  
+**Backend:** Node.js + Express  
+**Database:** Supabase (PostgreSQL)
+
+## Team
+
+- **Johnny** - Frontend Development
+- **Jack & Joe** - Backend Development
+
+---
+
+Built at New Paltz Hackathon 2025 🎓
