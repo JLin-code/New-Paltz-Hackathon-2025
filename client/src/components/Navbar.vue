@@ -87,4 +87,11 @@ const southDropdown = ref(false);
    align-items: center;
 }
 
+@media screen and (max-width: 1023px) {
+  .navbar-center {
+    display: block;      
+    text-align: center;  
+  }
+}
+
 </style>
