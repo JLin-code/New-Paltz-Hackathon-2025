@@ -8,21 +8,19 @@ const corsOptions = {
 const app = express();
 const PORT = process.env.PORT ?? 10000;
 
-// Import routes
-const hallRoutes = require("./routes/hallRoutes");
-const machineRoutes = require("./routes/machineRoutes");
+const hallController = require("./controllers/hallController");
+const machineController = require("./controllers/machineController");
 
 // Middleware
 app.use(express.json());
 
 app.use(cors(corsOptions));
 
-// API Routes
-app.use("/api/halls", hallRoutes);
-app.use("/api/machines", machineRoutes);
-
 // Serve static files (Vue.js app)
-app.use("/", express.static(path.join(__dirname, "../client/dist")));
+app
+  .use("/api/halls", hallController)
+  .use("/api/machines", machineController)
+  .use("/", express.static(path.join(__dirname, "../client/dist")));
 
 // Catch-all route for Vue Router (SPA)
 app.get("*", (req, res) => {
