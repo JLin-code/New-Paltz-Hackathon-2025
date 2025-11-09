@@ -1,29 +1,11 @@
-import express from 'express';
-import cors from 'cors';
-import dotenv from 'dotenv';
-import { testConnection } from './src/config/database.js';
-import userRoutes from './src/routes/users.js';
-
-dotenv.config();
+const express = require("express");
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || process.argv[2] || 3000;
 
-app.use(cors());
-app.use(express.json());
-
-// Health check
-app.get('/health', (req, res) => {
-  res.json({ status: 'ok', timestamp: new Date().toISOString() });
-});
-
-// Routes
-app.use('/api/users', userRoutes);
-
-// Error handling middleware
-app.use((err, req, res, next) => {
-  console.error(err.stack);
-  res.status(500).json({ success: false, error: 'Something went wrong!' });
+// Simple JSON endpoint for quick dev verification
+app.get("/", (req, res) => {
+  res.json({ status: "ok", message: "Server running" });
 });
 
 // Start server
