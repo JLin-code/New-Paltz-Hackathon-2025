@@ -2,6 +2,9 @@
 import { ref } from 'vue';
 
 const burgerActive = ref(false);
+const parkerDropdown = ref(false);
+const peregrineDropdown = ref(false);
+const southDropdown = ref(false);
 </script>
 
 <template>
@@ -21,10 +24,47 @@ const burgerActive = ref(false);
   <div id="navbarBasicExample" class="navbar-menu" :class="{ 'is-active': burgerActive }">
     <div class="navbar-start">
       <RouterLink to="/" class="navbar-item"><i class="fas fa-home"></i>Home</RouterLink>
-      <RouterLink to="/BoutonHall" class="navbar-item"><i class="fas fa-home"></i>Bouton Hall</RouterLink>
-      <RouterLink to="/AwoostingHall" class="navbar-item"><i class="fas fa-home"></i>Awoosting Hall</RouterLink>
-      <RouterLink to="/EsopusHall" class="navbar-item"><i class="fas fa-home"></i>Esopus Hall</RouterLink>
-      <RouterLink to="/RidgeviewHall" class="navbar-item"><i class="fas fa-home"></i>Ridgeview Hall</RouterLink>
+      
+      <!-- Parker Complex Dropdown -->
+      <div class="navbar-item has-dropdown" :class="{ 'is-active': parkerDropdown }" @click="parkerDropdown = !parkerDropdown">
+        <a class="navbar-link">
+          Parker Complex
+        </a>
+        <div class="navbar-dropdown">
+          <RouterLink to="/BlissHall" class="navbar-item">Bliss Hall</RouterLink>
+          <RouterLink to="/BoutonHall" class="navbar-item">Bouton Hall</RouterLink>
+          <RouterLink to="/CapenHall" class="navbar-item">Capen Hall</RouterLink>
+          <RouterLink to="/GageHall" class="navbar-item">Gage Hall</RouterLink>
+          <RouterLink to="/ScudderHall" class="navbar-item">Scudder Hall</RouterLink>
+          <RouterLink to="/ShangoCollegeHall" class="navbar-item">Shango/College Hall</RouterLink>
+        </div>
+      </div>
+
+      <!-- Peregrine Complex Dropdown -->
+      <div class="navbar-item has-dropdown" :class="{ 'is-active': peregrineDropdown }" @click="peregrineDropdown = !peregrineDropdown">
+        <a class="navbar-link">
+          Peregrine Complex
+        </a>
+        <div class="navbar-dropdown">
+          <RouterLink to="/AshokanHall" class="navbar-item">Ashokan Hall</RouterLink>
+          <RouterLink to="/AwostingHall" class="navbar-item">Awosting Hall</RouterLink>
+          <RouterLink to="/MinnewaskaHall" class="navbar-item">Minnewaska Hall</RouterLink>
+          <RouterLink to="/MohonkHall" class="navbar-item">Mohonk Hall</RouterLink>
+          <RouterLink to="/ShawangunkHall" class="navbar-item">Shawangunk Hall</RouterLink>
+        </div>
+      </div>
+
+      <!-- South Complex Dropdown -->
+      <div class="navbar-item has-dropdown" :class="{ 'is-active': southDropdown }" @click="southDropdown = !southDropdown">
+        <a class="navbar-link">
+          South Complex
+        </a>
+        <div class="navbar-dropdown">
+          <RouterLink to="/EsopusHall" class="navbar-item">Esopus Hall</RouterLink>
+          <RouterLink to="/LenapeHall" class="navbar-item">Lenape Hall</RouterLink>
+          <RouterLink to="/RidgeviewHall" class="navbar-item">Ridgeview Hall</RouterLink>
+        </div>
+      </div>
 
     </div>
 
